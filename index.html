@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Collar Strategy Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Load calculator module first -->
+  <script src="calculator.js" defer></script>
+  <!-- Then load UI module -->
+  <script src="ui.js" defer></script>
+</head>
+
+<body>
+  <h1 class="title">Collar Strategy Calculator</h1>
+
+  <form id="tradeForm" class="form">
+    <div class="form-group">
+      <label>API Token: <input type="text" id="apiToken" placeholder="Enter your API token" required></label>
+    </div>
+    <div class="form-group">
+      <label>Symbol: <input type="text" id="symbol" maxlength="7" placeholder="e.g., AAPL" required></label>
+    </div>
+    <div class="form-group range-group">
+      <label>Strike-%:</label>
+      <div class="range-container">
+        <div class="range-slider" data-slider="strike">
+          <div class="range-track">
+            <div class="range-selected"></div>
+            <div class="thumb thumb-min"></div>
+            <div class="thumb thumb-max"></div>
+          </div>
+          <div class="range-display">30% - 80%</div>
+        </div>
+        <input type="hidden" id="minStrike" value="30">
+        <input type="hidden" id="maxStrike" value="80">
+      </div>
+    </div>
+    <div class="form-group range-group">
+      <label>DTE Range:</label>
+      <div class="range-container">
+        <div class="range-slider" data-slider="dte">
+          <div class="range-track">
+            <div class="range-selected"></div>
+            <div class="thumb thumb-min"></div>
+            <div class="thumb thumb-max"></div>
+          </div>
+          <div class="range-display">1 - 45 days</div>
+        </div>
+        <input type="hidden" id="minDte" value="1">
+        <input type="hidden" id="maxDte" value="45">
+      </div>
+    </div>
+    <button type="submit" class="submit-btn">Fetch & Calculate</button>
+  </form>
+
+  <div id="message" class="message"></div>
+
+  <!-- Results container that will hold multiple tables -->
+  <div id="resultsContainer" class="results-container">
+    <!-- Tables for each expiration date will be dynamically inserted here -->
+  </div>
+</body>
+
+</html>
